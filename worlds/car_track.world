@@ -1,0 +1,56 @@
+<sdf version="1.6">
+  <world name="default">
+
+<!--
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+-->
+
+
+<model name="ground">
+      <pose>75 -41.8 0 0 0 1.57</pose>
+      <static>1</static>
+      <link name="ground">
+        <collision name="ground_coll">
+          <geometry>
+            <box>
+              <size>83.6 150 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="ground_vis">
+          <geometry>
+            <box>
+              <size>83.6 150  0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri> ./course.material </uri>  <!-- file://course.material -->
+              <name>course</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>86.18 -37.624 8.2356 0 0.3778 1.58861</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
+
+
