@@ -27,6 +27,7 @@ setup(
             'spawn_prius = ros2_term_project.spawn_prius:main',
             'starter = ros2_term_project.car_starter:main',
             'controller=ros2_term_project.car_controller:main',
+            'line_follower=ros2_term_project.line_follower:main',
         ],
     },
 )

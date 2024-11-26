@@ -70,10 +70,18 @@ def generate_launch_description():
         output='screen'
     )
 
+    line_follower = Node(
+        package='ros2_term_project',
+        executable='line_follower',
+        name='line_follower',
+        output='screen'
+    )
+
     ld.add_action(declare_argument)
     ld.add_action(gazebo_run)
     ld.add_action(spawn_prius)
     ld.add_action(controller)
-    # ld.add_action(starter)
+    ld.add_action(line_follower)
+    ld.add_action(starter)
 
     return ld
