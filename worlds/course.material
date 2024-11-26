@@ -13,3 +13,35 @@ material course
     }
   }
 }
+
+material line
+{
+  receive_shadows on
+  technique
+  {
+    pass
+    {
+      ambient 0.5 0.5 0.5 1.0
+      texture_unit
+      {
+        texture ./ros2_car_track_hill.png
+      }
+    }
+  }
+}
+
+material stop
+{
+  receive_shadows on
+  technique
+  {
+    pass
+    {
+      ambient 0.5 0.5 0.5 1.0
+      texture_unit
+      {
+        texture ./ros2_car_track_stop.png
+      }
+    }
+  }
+}

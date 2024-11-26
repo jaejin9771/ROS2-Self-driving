@@ -28,6 +28,8 @@ setup(
             'starter = ros2_term_project.car_starter:main',
             'controller=ros2_term_project.car_controller:main',
             'line_follower=ros2_term_project.line_follower:main',
+            'box_spawn=ros2_term_project.box_spawn:main',
+            'teleop_manager=ros2_term_project.teleop_manager:main',
         ],
     },
 )

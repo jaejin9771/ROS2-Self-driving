@@ -40,12 +40,109 @@
       </link>
     </model>
 
+
+    <model name="hill_1">
+      <pose>85 -70.17 0.4 0 -0.1747 0</pose>
+      <static>1</static>
+      <link name="cube_link">
+        <collision name="cube_coll">
+          <geometry>
+            <box>
+              <size>10 9.3230 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="cube_vis">
+          <geometry>
+            <box>
+              <size>10 9.3230 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>./course.material</uri>
+              <name>stop</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="hill_2">
+      <pose>92.33 -70.17 1.26 0 0 0</pose>
+      <static>1</static>
+      <link name="cube_link">
+        <collision name="cube_coll">
+          <geometry>
+            <box>
+              <size>5 9.3230 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="cube_vis">
+          <geometry>
+            <box>
+              <size>5 9.3230 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>./course.material</uri>
+              <name>line</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="hill_3">
+      <pose>99.66 -70.17 0.4 0 0.1747 0</pose>
+      <static>1</static>
+      <link name="cube_link">
+        <collision name="cube_coll">
+          <geometry>
+            <box>
+              <size>10 9.3230 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="cube_vis">
+          <geometry>
+            <box>
+              <size>10 9.3230 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>./course.material</uri>
+              <name>line</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
     <include>
       <uri>model://sun</uri>
     </include>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>86.18 -37.624 8.2356 0 0.3778 1.58861</pose>
+        <pose>-19.9 -75.97 38.248848 0 0.5338 0.476</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

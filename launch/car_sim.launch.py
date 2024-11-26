@@ -77,11 +77,30 @@ def generate_launch_description():
         output='screen'
     )
 
+    spawn_box = Node(
+        package='ros2_term_project',
+        executable='box_spawn',
+        name='box_spawn',
+        output='screen'
+    )
+
+    move_box = Node(
+        package='ros2_term_project',
+        executable='teleop_manager',
+        name='teleop_manager',
+        output='screen',
+        remappings=[
+            ('teleop_cmd_vel', 'demo/cmd_demo')
+        ],
+    )
+
     ld.add_action(declare_argument)
     ld.add_action(gazebo_run)
     ld.add_action(spawn_prius)
+    ld.add_action(spawn_box)
     ld.add_action(controller)
+    ld.add_action(move_box)
     ld.add_action(line_follower)
-    ld.add_action(starter)
+    # ld.add_action(starter)
 
     return ld
