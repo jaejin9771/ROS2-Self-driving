@@ -33,7 +33,7 @@ class LineFollower(Node):
         )
         
         self.stopped = False  # 차량 정지 상태를 추적
-        self.stop_duration = 3.0  # 정지 후 대기 시간 (초)
+        self.stop_duration = 5.0  # 정지 후 대기 시간 (초)
 
     def car_info_listener_callback(self, msg: String):
         car = msg.data
@@ -62,7 +62,7 @@ class LineFollower(Node):
         # 정지선이 없을 경우 정상적인 주행
         self.line_tracker.process(img)
         twist.angular.z = (-1) * self.line_tracker.delta / 300
-        if abs(twist.angular.z) > 0.07:  # 회전 값이 크면 속도를 줄임
+        if abs(twist.angular.z) > 0.15:  # 회전 값이 크면 속도를 줄임
             twist.linear.x = 3.0
         else:
             twist.linear.x = 6.0
