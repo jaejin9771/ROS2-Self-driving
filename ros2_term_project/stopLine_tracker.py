@@ -22,8 +22,8 @@ class StopLineTracker:
 
         # 이미지의 높이와 너비 가져오기
         h, w, _ = img.shape
-        search_top = int(h / 2 + 60)
-        search_bot = int(h / 2 + 80)
+        search_top = int(h / 2 + 40)
+        search_bot = int(h / 2 + 60)
 
         # 관심 영역만 마스킹
         mask[0:search_top, 0:w] = 0
@@ -34,7 +34,7 @@ class StopLineTracker:
 
         for contour in contours:
             area = cv2.contourArea(contour)
-            if area > 1000:  # 특정 면적 이상인 경우 정지선으로 간주
+            if area > 1400:  # 특정 면적 이상인 경우 정지선으로 간주
                 self.stop_line_detected = True
                 break
         else:

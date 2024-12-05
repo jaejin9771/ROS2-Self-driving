@@ -30,6 +30,7 @@ setup(
             'line_follower=ros2_term_project.line_follower:main',
             'box_spawn=ros2_term_project.box_spawn:main',
             'teleop_manager=ros2_term_project.teleop_manager:main',
+            'lidar_obstacle_avoidance = ros2_term_project.lidar_obstacle_avoidance:main',
         ],
     },
 )

@@ -94,6 +94,13 @@ def generate_launch_description():
         ],
     )
 
+    lidar = Node(
+        package='ros2_term_project',
+        executable='lidar_obstacle_avoidance',
+        name='lidar_obstacle_avoidance',
+        output='screen',
+    )
+
     ld.add_action(declare_argument)
     ld.add_action(gazebo_run)
     ld.add_action(spawn_prius)
@@ -101,6 +108,7 @@ def generate_launch_description():
     ld.add_action(controller)
     ld.add_action(move_box)
     ld.add_action(line_follower)
-    # ld.add_action(starter)
+    ld.add_action(lidar)
+    ld.add_action(starter)
 
     return ld

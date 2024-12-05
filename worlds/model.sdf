@@ -579,7 +579,7 @@
             </box>
           </geometry>
         </visual>
-      </link>
+    </link>
 
     <link name="camera_rgb_optical_frame">
             <inertial>
@@ -647,7 +647,74 @@
                 <xyz>0 0 1</xyz>
             </axis>
         </joint>
+
+        <link name="hokuyo_link">
+          <pose>0 -0.8 1.5 0 0 -1.57</pose> <!-- 카메라와 동일한 pose -->
+          <inertial>
+            <inertia>
+              <ixx>1e-6</ixx>
+              <ixy>0</ixy>
+              <ixz>0</ixz>
+              <iyy>1e-6</iyy>
+              <iyz>0</iyz>
+              <izz>1e-6</izz>
+            </inertia>
+            <mass>1e-5</mass>
+          </inertial>
+          <collision name="collision">
+            <pose>0 0 0 0 0 0</pose> <!-- Lidar 센서의 충돌 박스도 동일하게 설정 -->
+            <geometry>
+              <box>
+                <size>0.1 0.1 0.1</size>
+              </box>
+            </geometry>
+          </collision>
+          <visual name="visual">
+            <geometry>
+              <mesh>
+                <uri>model://hokuyo/meshes/hokuyo.dae</uri>
+              </mesh>
+            </geometry>
+          </visual>
+          <sensor name="laser" type="ray">
+            <pose>0 0 0 0 0 0</pose> <!-- Lidar 센서의 상대 pose를 0으로 설정 -->
+            <ray>
+              <scan>
+                <horizontal>
+                  <samples>320</samples>
+                  <resolution>5</resolution>
+                  <min_angle>-1.00</min_angle>
+                  <max_angle>1.00</max_angle>
+                </horizontal>
+              </scan>
+              <range>
+                <min>0.08</min>
+                <max>8</max>
+                <resolution>0.2</resolution>
+              </range>
+            </ray>
+            <plugin name="__model___laser" filename="libgazebo_ros_ray_sensor.so">
+              <ros>
+                <namespace>__model__</namespace>
+                <remapping>~/out:=scan</remapping>
+              </ros>
+              <frame_name>laser_frame</frame_name>
+              <output_type>sensor_msgs/LaserScan</output_type>
+            </plugin>
+            <always_on>1</always_on>
+            <update_rate>5</update_rate>
+            <visualize>1</visualize>
+          </sensor>
+        </link>
+
+        <joint name="hokuyo_joint" type="fixed">
+          <parent>chassis</parent>
+          <child>hokuyo_link</child>
+          <pose>0 -0.8 1.3 0 0 -1.57</pose> <!-- 카메라와 동일한 pose -->
+          <axis>
+            <xyz>0 0 1</xyz>
+          </axis>
+        </joint>
+
   </model>
-
-
 </sdf>

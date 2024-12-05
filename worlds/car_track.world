@@ -41,101 +41,74 @@
     </model>
 
 
-    <model name="hill_1">
-      <pose>85 -70.17 0.4 0 -0.1747 0</pose>
-      <static>1</static>
-      <link name="cube_link">
-        <collision name="cube_coll">
-          <geometry>
-            <box>
-              <size>10 9.3230 1</size>
-            </box>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
-        <visual name="cube_vis">
-          <geometry>
-            <box>
-              <size>10 9.3230 1</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <uri>./course.material</uri>
-              <name>stop</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
+    <model name="stop">
+            <pose>86.697 -70.159 1.200 0 -0.174447 0</pose>
+            <link name="link">
+                <visual name="visual">
+                    <geometry>
+                        <box>
+                            <size>0.5 8 0.5</size>
+                        </box>
+                    </geometry>
+                </visual>
+                <gravity>false</gravity>
+            </link>
+        </model>
 
-    <model name="hill_2">
-      <pose>92.33 -70.17 1.26 0 0 0</pose>
-      <static>1</static>
-      <link name="cube_link">
-        <collision name="cube_coll">
-          <geometry>
-            <box>
-              <size>5 9.3230 1</size>
-            </box>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
-        <visual name="cube_vis">
-          <geometry>
-            <box>
-              <size>5 9.3230 1</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <uri>./course.material</uri>
-              <name>line</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
+        <model name="hill">
+            <include>
+                <uri>model://hill</uri>
+            </include>
+            <pose>91 -70.2 0.9 1.5708 0 1.5708</pose>
+        </model>
 
-    <model name="hill_3">
-      <pose>99.66 -70.17 0.4 0 0.1747 0</pose>
-      <static>1</static>
-      <link name="cube_link">
-        <collision name="cube_coll">
-          <geometry>
-            <box>
-              <size>10 9.3230 1</size>
-            </box>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-          </surface>
-        </collision>
-        <visual name="cube_vis">
-          <geometry>
-            <box>
-              <size>10 9.3230 1</size>
-            </box>
-          </geometry>
-          <material>
+        <actor name="actor_walking">
+            <skin>
+                <filename>walk.dae</filename>
+            </skin>
+            <animation name="walk">
+                <filename>walk.dae</filename>
+                <interpolate_x>true</interpolate_x>
+            </animation>
             <script>
-              <uri>./course.material</uri>
-              <name>line</name>
+                <trajectory id="0" type="walk" tension="0.6">
+                    <waypoint>
+                        <time>0</time>
+                        <pose>127 -41 0 0 0 0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>10</time>
+                        <pose>138 -41 0 0 0 0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>11</time>
+                        <pose>138 -41 0 0 0 -3.0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>21</time>
+                        <pose>127 -41 0 0 0 -3.0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>22</time>
+                        <pose>127 -41 0 0 0 0</pose>
+                    </waypoint>
+                </trajectory>
             </script>
-          </material>
-        </visual>
-      </link>
-    </model>
+            <link name="link">
+                <inertial>
+                    <pose>0 0 0.95 0 0 0</pose>
+                    <mass>80.0</mass>
+                    <inertia>
+                        <ixx>27.82</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>24.88</iyy>
+                        <iyz>0</iyz>
+                        <izz>4.57</izz>
+                    </inertia>
+                </inertial>
+            </link>
+        </actor>
 
     <include>
       <uri>model://sun</uri>
