@@ -1,4 +1,5 @@
 import rclpy
+from nav_msgs.msg import Odometry
 from rclpy.node import Node
 from rclpy.qos import QoSProfile
 from ros2_term_project import line_follower
@@ -37,8 +38,13 @@ class LidarObstacleAvoidance(Node):
             self.obstacle_detected = False
             self.previous_distance = float('inf')
 
-            # 상태 체크를 위한 타이머 추가
-            self.status_timer = self.create_timer(1.0, self.status_check)
+            # 경사도 계산을 위한 이전 위치 저장
+            self.prev_position = None
+            self.slope_threshold = 5.0  # 경사도 임계값 (단위: degrees)
+
+            self.odom_subscription = None
+            # Lidar 데이터 사용 여부
+            self.ignore_lidar = False
 
             # 차선 감지와 정지선 감지를 위한 publisher 생성
             self.pause_publisher = self.create_publisher(String, f'/PR001/pause_lane_following', self.qos_profile)
@@ -70,7 +76,17 @@ class LidarObstacleAvoidance(Node):
             self.qos_profile
         )
 
+        self.odom_subscription = self.create_subscription(
+            Odometry,
+            f'/{car}/odom',
+            self.odom_callback,
+            10
+        )
+
     def lidar_callback(self, msg):
+        if self.ignore_lidar:
+            self.get_logger().info("Ignoring Lidar data due to steep slope.")
+            return
         try:
             # Lidar 데이터에서 가장 가까운 거리 탐색
             valid_ranges = [r for r in msg.ranges if not math.isinf(r) and not math.isnan(r) and r > 0.1]
@@ -83,7 +99,7 @@ class LidarObstacleAvoidance(Node):
             self.get_logger().info(f'Lidar 데이터 수신 중... 최소 거리: {min_distance}m')
 
             # 장애물이 안전 거리 이내에 있는지 여부를 업데이트
-            if min_distance < self.min_safe_distance:
+            if 1 <= min_distance < self.min_safe_distance:
                 self.get_logger().info(f'장애물 감지! 최소 거리: {min_distance}m. 속도 감소.')
                 self.obstacle_detected = True
 

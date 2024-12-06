@@ -34,7 +34,7 @@ class StopLineTracker:
 
         for contour in contours:
             area = cv2.contourArea(contour)
-            if area > 1400:  # 특정 면적 이상인 경우 정지선으로 간주
+            if area > 1600:  # 특정 면적 이상인 경우 정지선으로 간주
                 self.stop_line_detected = True
                 break
         else:

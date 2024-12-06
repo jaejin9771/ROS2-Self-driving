@@ -649,7 +649,7 @@
         </joint>
 
         <link name="hokuyo_link">
-          <pose>0 -0.8 1.5 0 0 -1.57</pose> <!-- 카메라와 동일한 pose -->
+          <pose>0 -2.2 0.8 0 0 -1.57</pose>
           <inertial>
             <inertia>
               <ixx>1e-6</ixx>
@@ -683,8 +683,8 @@
                 <horizontal>
                   <samples>320</samples>
                   <resolution>5</resolution>
-                  <min_angle>-1.00</min_angle>
-                  <max_angle>1.00</max_angle>
+                  <min_angle>-0.85</min_angle>
+                  <max_angle>0.85</max_angle>
                 </horizontal>
               </scan>
               <range>
@@ -710,7 +710,7 @@
         <joint name="hokuyo_joint" type="fixed">
           <parent>chassis</parent>
           <child>hokuyo_link</child>
-          <pose>0 -0.8 1.3 0 0 -1.57</pose> <!-- 카메라와 동일한 pose -->
+          <pose>0 -2.2 0.8 0 0 -1.57</pose>
           <axis>
             <xyz>0 0 1</xyz>
           </axis>
