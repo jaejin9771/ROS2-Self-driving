@@ -1,7 +1,7 @@
 import rclpy
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
-from rclpy.qos import QoSProfile
+from rclpy.qos import QoSProfile, ReliabilityPolicy
 from ros2_term_project import line_follower
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
@@ -15,7 +15,7 @@ class LidarObstacleAvoidance(Node):
             super().__init__('lidar_obstacle_avoidance')
 
             # QoS 설정을 SYSTEM_DEFAULT로 지정
-            self.qos_profile = QoSProfile(depth=10)
+            self.qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
             # 지정된 차량 정보를 받아올 subscription
             self.car_info_subscription_ = self.create_subscription(
                 String,
@@ -76,13 +76,6 @@ class LidarObstacleAvoidance(Node):
             self.qos_profile
         )
 
-        self.odom_subscription = self.create_subscription(
-            Odometry,
-            f'/{car}/odom',
-            self.odom_callback,
-            10
-        )
-
     def lidar_callback(self, msg):
         if self.ignore_lidar:
             self.get_logger().info("Ignoring Lidar data due to steep slope.")
@@ -99,7 +92,7 @@ class LidarObstacleAvoidance(Node):
             self.get_logger().info(f'Lidar 데이터 수신 중... 최소 거리: {min_distance}m')
 
             # 장애물이 안전 거리 이내에 있는지 여부를 업데이트
-            if 1 <= min_distance < self.min_safe_distance:
+            if 0.9 <= min_distance < self.min_safe_distance:
                 self.get_logger().info(f'장애물 감지! 최소 거리: {min_distance}m. 속도 감소.')
                 self.obstacle_detected = True
 

@@ -240,7 +240,7 @@ class LineFollower(Node):
 
         # 초기 속도로 시작하여 점진적으로 줄이기
         self.stop_speed = 2.0
-        self.deceleration_timer = self.create_timer(0.25, self.gradual_stop)
+        self.deceleration_timer = self.create_timer(0.2, self.gradual_stop)
 
     def gradual_stop(self):
         """속도를 점진적으로 줄이는 함수"""

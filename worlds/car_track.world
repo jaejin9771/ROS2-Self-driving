@@ -85,50 +85,70 @@
         
         <actor name="actor_walking">
             <skin>
-                <filename>walk.dae</filename>
-            </skin>
-            <animation name="walk">
-                <filename>walk.dae</filename>
-                <interpolate_x>true</interpolate_x>
-            </animation>
-            <script>
-                <trajectory id="0" type="walk" tension="0.6">
-                    <waypoint>
-                        <time>0</time>
-                        <pose>127 -41 0 0 0 0</pose>
-                    </waypoint>
-                    <waypoint>
-                        <time>10</time>
-                        <pose>138 -41 0 0 0 0</pose>
-                    </waypoint>
-                    <waypoint>
-                        <time>11</time>
-                        <pose>138 -41 0 0 0 -3.0</pose>
-                    </waypoint>
-                    <waypoint>
-                        <time>21</time>
-                        <pose>127 -41 0 0 0 -3.0</pose>
-                    </waypoint>
-                    <waypoint>
-                        <time>22</time>
-                        <pose>127 -41 0 0 0 0</pose>
-                    </waypoint>
-                </trajectory>
-            </script>
-            <link name="link">
-                <inertial>
-                    <pose>0 0 0.95 0 0 0</pose>
-                    <mass>80.0</mass>
-                    <inertia>
-                        <ixx>27.82</ixx>
-                        <ixy>0</ixy>
-                        <ixz>0</ixz>
-                        <iyy>24.88</iyy>
-                        <iyz>0</iyz>
-                        <izz>4.57</izz>
-                    </inertia>
-                </inertial>
-            </link>
+        <filename>walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <pose>127.0 -44.0 0 0 0 0</pose>
+      <animation name="custom_walk_animation">
+        <filename>walk.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.000000</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="custom_walk_animation" tension="0.6">
+          <waypoint>
+            <time>0.000000</time>
+            <pose>127.0 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>2.000000</time>
+            <pose>129.2 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>4.000000</time>
+            <pose>131.4 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>5.000000</time>
+            <pose>132.5 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>6.000000</time>
+            <pose>133.6 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>10.000000</time>
+            <pose>138.0 -42.0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>11.000000</time>
+            <pose>138.0 -42.0 0 0 0 -3.0</pose>
+          </waypoint>
+          <waypoint>
+            <time>12.000000</time>
+            <pose>137.0 -42.0 0 0 0 -3.0</pose>
+          </waypoint>
+          <waypoint>
+            <time>13.000000</time>
+            <pose>136.0 -42.0 0 0 0 -3.0</pose>
+          </waypoint>
+          <waypoint>
+            <time>15.000000</time>
+            <pose>133.0 -42.0 0 0 0 -3.0</pose>
+          </waypoint>
+          <waypoint>
+            <time>20.700000</time>
+            <pose>127.0 -42.0 0 0 0 -3.0</pose>
+          </waypoint>
+          <waypoint>
+            <time>22.000000</time>
+            <pose>127.0 -42.0 0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+
         </actor>
 
 
