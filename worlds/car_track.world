@@ -83,34 +83,54 @@
             </link>
         </model>
         
-        <model name="hill">
-            <pose>91 -70.2 0.9 1.5708 0 1.5708</pose>
-            <static>true</static>
-            <link name="hill_link">
-                <collision name="collision">
-                    <geometry>
-                        <mesh>
-                            <uri>hill.dae</uri>
-                            <scale>2 1 1</scale>
-                        </mesh>
-                    </geometry>
-                </collision>
-                <visual name="hill_vis">
-                    <geometry>
-                        <mesh>
-                            <uri>hill.dae</uri>
-                            <scale>2 1 1</scale>
-                        </mesh>
-                    </geometry>
-                    <material>
-                        <script>
-                            <uri> ./course.material </uri>
-                            <name>line</name>
-                        </script>
-                    </material>
-                </visual>
+        <actor name="actor_walking">
+            <skin>
+                <filename>walk.dae</filename>
+            </skin>
+            <animation name="walk">
+                <filename>walk.dae</filename>
+                <interpolate_x>true</interpolate_x>
+            </animation>
+            <script>
+                <trajectory id="0" type="walk" tension="0.6">
+                    <waypoint>
+                        <time>0</time>
+                        <pose>127 -41 0 0 0 0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>10</time>
+                        <pose>138 -41 0 0 0 0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>11</time>
+                        <pose>138 -41 0 0 0 -3.0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>21</time>
+                        <pose>127 -41 0 0 0 -3.0</pose>
+                    </waypoint>
+                    <waypoint>
+                        <time>22</time>
+                        <pose>127 -41 0 0 0 0</pose>
+                    </waypoint>
+                </trajectory>
+            </script>
+            <link name="link">
+                <inertial>
+                    <pose>0 0 0.95 0 0 0</pose>
+                    <mass>80.0</mass>
+                    <inertia>
+                        <ixx>27.82</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>24.88</iyy>
+                        <iyz>0</iyz>
+                        <izz>4.57</izz>
+                    </inertia>
+                </inertial>
             </link>
-        </model>
+        </actor>
+
 
 
     <include>
