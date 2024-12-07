@@ -18,7 +18,7 @@ class PriusSpawner(Node):
 
         # 차량들을 미리 생성
         self.spawn('PR001', (90.0, -12.0, 0.2))  # PR001
-        # self.spawn('PR002', (90.0, -16.0, 0.2))  # PR002
+        self.spawn('PR002', (90.0, -16.0, 0.2))  # PR002
 
     def spawn(self, name, position):
         pose = Pose()
