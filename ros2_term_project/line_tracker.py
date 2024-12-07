@@ -68,8 +68,8 @@ class LineTracker:
             self.delta = err
 
         # 이미지 출력
-        cv2.imshow("Window", img)
-        cv2.imshow("Mask", mask)
+        # cv2.imshow("Window", img)
+        # cv2.imshow("Mask", mask)
         cv2.waitKey(3)
 
 

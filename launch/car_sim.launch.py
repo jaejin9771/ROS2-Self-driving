@@ -109,6 +109,6 @@ def generate_launch_description():
     ld.add_action(move_box)
     ld.add_action(line_follower)
     ld.add_action(lidar)
-    ld.add_action(starter)
+    # ld.add_action(starter)
 
     return ld

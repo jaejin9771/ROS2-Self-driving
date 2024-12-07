@@ -39,6 +39,6 @@ class EndLineTracker:
                 break
 
         # 이미지 출력
-        cv2.imshow("End Line Mask", mask)
+        # cv2.imshow("End Line Mask", mask)
         cv2.waitKey(3)
 

@@ -45,5 +45,5 @@ class StopLineTracker:
             cv2.putText(img, "Stop Line Detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
         # 이미지 출력
-        cv2.imshow("Stop Line Mask", mask)
+        # cv2.imshow("Stop Line Mask", mask)
         cv2.waitKey(3)
